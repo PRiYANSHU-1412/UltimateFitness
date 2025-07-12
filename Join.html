@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Fitness - Join Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Join Us Header */
+        .join-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+
+        .join-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .join-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .header-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .header-button {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .primary-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: 2px solid #e74c3c;
+        }
+
+        .primary-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .secondary-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #e74c3c;
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        .benefit-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .benefit-description {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        /* Membership Options */
+        .membership-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .membership-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .membership-tab {
+            padding: 10px 30px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #7f8c8d;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .membership-tab.active {
+            color: #e74c3c;
+        }
+
+        .membership-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #e74c3c;
+        }
+
+        .membership-content {
+            display: none;
+        }
+
+        .membership-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .membership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .membership-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .membership-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .membership-card.popular {
+            border: 2px solid #e74c3c;
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .membership-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .membership-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        .membership-price span {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        .membership-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .membership-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            color: #7f8c8d;
+        }
+
+        .membership-features li:last-child {
+            border-bottom: none;
+        }
+
+        .membership-features li i {
+            color: #e74c3c;
+            margin-right: 10px;
+        }
+
+        .membership-button {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .membership-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 80px 0;
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            top: -20px;
+            left: -15px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            margin-right: 15px;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .join-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .header-button {
+                width: 100%;
+                max-width: 250px;
+                margin-bottom: 10px;
+            }
+            
+            .membership-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .membership-tab {
+                padding: 8px 15px;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Join Us Header -->
+    <section class="join-header">
+        <div class="container">
+            <h1>JOIN ULTIMATE FITNESS TODAY</h1>
+            <p>Start your fitness journey with the best trainers, top-notch equipment, and a supportive community. Your healthier, stronger future begins here.</p>
+            <div class="header-buttons">
+                <a href="#membership" class="header-button primary-btn">VIEW MEMBERSHIPS</a>
+                <a href="#form" class="header-button secondary-btn">BOOK A TOUR</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">WHY CHOOSE ULTIMATE FITNESS?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-dumbbell"></i></div>
+                    <h3 class="benefit-title">World-Class Equipment</h3>
+                    <p class="benefit-description">Train with the best equipment from leading fitness brands, maintained to the highest standards.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                    <h3 class="benefit-title">Expert Trainers</h3>
+                    <p class="benefit-description">Our certified trainers will guide you every step of the way with personalized attention.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h3 class="benefit-title">Flexible Hours</h3>
+                    <p class="benefit-description">Open 24/7 with staffed hours from 6AM to 10PM to fit your schedule.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-heartbeat"></i></div>
+                    <h3 class="benefit-title">Variety of Classes</h3>
+                    <p class="benefit-description">From HIIT to yoga, we offer 50+ classes weekly to keep your workouts fresh.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-child"></i></div>
+                    <h3 class="benefit-title">Community Support</h3>
+                    <p class="benefit-description">Join a welcoming community of members who motivate and inspire each other.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-trophy"></i></div>
+                    <h3 class="benefit-title">Proven Results</h3>
+                    <p class="benefit-description">Our members achieve real, measurable results with our science-backed programs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Options -->
+    <section class="membership-section" id="membership">
+        <div class="container">
+            <h2 class="section-title">MEMBERSHIP OPTIONS</h2>
+            <div class="membership-tabs">
+                <div class="membership-tab active" data-tab="individual">Individual</div>
+                <div class="membership-tab" data-tab="couple">Couple</div>
+                <div class="membership-tab" data-tab="family">Family</div>
+            </div>
+            
+            <div class="membership-content active" id="individual-membership">
+                <div class="membership-grid">
+                    <div class="membership-card">
+                        <h3 class="membership-title">BASIC</h3>
+                        <div class="membership-price">1000 Rupees<span>/month</span></div>
+                        <ul class="membership-features">
+                            <li><i class="fas fa-check"></i> Gym access</li>
+                            <li><i class="fas fa-check"></i> 2 group classes/week</li>
+                            <li><i class="fas fa-times"></i> Personal training</li>
+                            <li><i class="fas fa-times"></i> 24/7 access</li>
+                        </ul>
+                        <a href="#form" class="membership-button">JOIN NOW</a>
+                    </div>
+                    <div class="membership-card popular">
+                        <div class="popular-tag">MOST POPULAR</div>
+                        <h3 class="membership-title">STANDARD</h3>
+                        <div class="membership-price">1500 Rupees<span>/month</span></div>
+                        <ul class="membership-features">
+                            <li><i class="fas fa-check"></i> Unlimited gym access</li>
+                            <li><i class="fas fa-check"></i> Unlimited group classes</li>
+                            <li><i class="fas fa-check"></i> 24/7 access</li>
+                            <li><i class="fas fa-times"></i> Personal training</li>
+                        </ul>
+                        <a href="#form" class="membership-button">JOIN NOW</a>
+                    </div>
+                    <div class="membership-card">
+                        <h3 class="membership-title">PREMIUM</h3>
+                        <div class="membership-price">2500 Rupees<span>/month</span></div>
+                        <ul class="membership-features">
+                            <li><i class="fas fa-check"></i> Unlimited gym access</li>
+                            <li><i class="fas fa-check"></i> Unlimited classes</li>
+                            <li><i class="fas fa-check"></i> 24/7 access</li>
+                            <li><i class="fas fa-check"></i> 1 PT session/month</li>
+                        </ul>
+                        <a href="#form" class="membership-button">JOIN NOW</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="membership-content" id="couple-membership">
+                <div class="membership-grid">
+                    <div class="membership-card">
+                        <h3 class="membership-title">COUPLE BASIC</h3>
+                        <div class="membership-price">1800 Rupees<span>/month</span></div>
+                        <ul class="membership-features">
+                            <li><i class="fas fa-check"></i> Gym access for two</li>
+                            <li><i class="fas fa-check"></i> 2 group classes/week each</li>
+                            <li><i class="fas fa-times"></i> Personal training</li>
+                        </ul>
+                        <a href="#form" class="membership-button">JOIN NOW</a>
+                    </div>
+                    <div class="membership-card popular">
+                        <div class="popular-tag">MOST POPULAR</div>
+                        <h3 class="membership-title">COUPLE STANDARD</h3>
+                        <div class="membership-price">2500 Rupees<span>/month</span></div>
+                        <ul class="membership-features">
+                            <li><i class="fas fa-check"></i> Unlimited gym access</li>
+                            <li><i class="fas fa-check"></i> Unlimited classes</li>
+                            <li><i class="fas fa-check"></i> 24/7 access</li>
+                        </ul>
+                        <a href="#form" class="membership-button">JOIN NOW</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="membership-content" id="family-membership">
+                <div class="membership-grid">
+                    <div class="membership-card">
+                        <h3 class="membership-title">FAMILY BASIC</h3>
+                        <div class="membership-price">3000 Rupees<span>/month</span></div>
+                        <ul class="membership-features">
+                            <li><i class="fas fa-check"></i> Gym access for family</li>
+                            <li><i class="fas fa-check"></i> 2 classes/week each</li>
+                            <li><i class="fas fa-check"></i> Kids' fitness programs</li>
+                        </ul>
+                        <a href="#form" class="membership-button">JOIN NOW</a>
+                    </div>
+                    <div class="membership-card popular">
+                        <div class="popular-tag">MOST POPULAR</div>
+                        <h3 class="membership-title">FAMILY PREMIUM</h3>
+                        <div class="membership-price">4000 Rupees<span>/month</span></div>
+                        <ul class="membership-features">
+                            <li><i class="fas fa-check"></i> Unlimited gym access</li>
+                            <li><i class="fas fa-check"></i> Unlimited classes</li>
+                            <li><i class="fas fa-check"></i> Kids' programs</li>
+                            <li><i class="fas fa-check"></i> 2 PT sessions/month</li>
+                        </ul>
+                        <a href="#form" class="membership-button">JOIN NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">WHAT OUR MEMBERS SAY</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        "Joining Ultimate Fitness was the best decision I've made for my health. The trainers are knowledgeable and the community is so supportive. I've lost 15kg in 3 months!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image" style="background-image: url('https://randomuser.me/api/portraits/women/32.jpg');"></div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Member since 2022</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        "The variety of classes keeps me motivated. From weightlifting to yoga, there's always something new to try. I've never stuck with a gym this long before."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image" style="background-image: url('https://randomuser.me/api/portraits/men/45.jpg');"></div>
+                        <div class="author-info">
+                            <h4>Rahul Patel</h4>
+                            <p>Member since 2021</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        "As a busy mom, the 24/7 access is a lifesaver. I can workout whenever I get time. The childcare during staffed hours is an added bonus!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image" style="background-image: url('https://randomuser.me/api/portraits/women/68.jpg');"></div>
+                        <div class="author-info">
+                            <h4>Neha Gupta</h4>
+                            <p>Member since 2020</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">READY TO TRANSFORM YOUR LIFE?</h2>
+                <p class="cta-text">Take the first step towards a healthier, stronger you. Join our community today and start seeing results.</p>
+                <!-- <a href="#form" class="header-button primary-btn">SIGN UP NOW</a> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section" id="form">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="form-title">GET STARTED TODAY</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="membership">Membership Type</label>
+                        <select id="membership" required>
+                            <option value="">Select an option</option>
+                            <option value="individual-basic">Individual Basic</option>
+                            <option value="individual-standard">Individual Standard</option>
+                            <option value="individual-premium">Individual Premium</option>
+                            <option value="couple-basic">Couple Basic</option>
+                            <option value="couple-standard">Couple Standard</option>
+                            <option value="family-basic">Family Basic</option>
+                            <option value="family-premium">Family Premium</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="goals">Your Fitness Goals</label>
+                        <textarea id="goals"></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">SUBMIT APPLICATION</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Membership Tab Functionality
+        const membershipTabs = document.querySelectorAll('.membership-tab');
+        const membershipContents = document.querySelectorAll('.membership-content');
+
+        membershipTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                
+                // Update active tab
+                membershipTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                membershipContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `${tabId}-membership`) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Form submission
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your application! We will contact you shortly.');
+            form.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 40,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

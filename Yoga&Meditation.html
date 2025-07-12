@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Fitness - Yoga & Meditation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Yoga Header */
+        .yoga-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+
+        .yoga-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .yoga-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .header-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .header-button {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .primary-btn {
+            background-color: #4a8f29;
+            color: white;
+            border: 2px solid #4a8f29;
+        }
+
+        .primary-btn:hover {
+            background-color: #3a7320;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .secondary-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Yoga Intro */
+        .yoga-intro {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            position: relative;
+            font-weight: 300;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #4a8f29;
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .intro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .intro-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .intro-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .intro-image:hover {
+            transform: translateY(-5px);
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Yoga Styles */
+        .yoga-styles {
+            padding: 80px 0;
+            background-color: #f5f9f4;
+        }
+
+        .styles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .style-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .style-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .style-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .style-content {
+            padding: 25px;
+        }
+
+        .style-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 400;
+        }
+
+        .style-meta {
+            display: flex;
+            margin-bottom: 15px;
+            color: #7f8c8d;
+        }
+
+        .style-meta span {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .style-meta i {
+            margin-right: 5px;
+            color: #4a8f29;
+        }
+
+        .style-description {
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .style-button {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: #4a8f29;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .style-button:hover {
+            background-color: #3a7320;
+            transform: translateY(-2px);
+        }
+
+        /* Meditation Benefits */
+        .meditation-benefits {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .benefits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-item {
+            display: flex;
+            margin-bottom: 30px;
+        }
+
+        .benefit-icon {
+            font-size: 1.8rem;
+            color: #4a8f29;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .benefit-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 400;
+        }
+
+        .benefit-text p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Schedule Section */
+        .schedule-section {
+            padding: 80px 0;
+            background-color: #f5f9f4;
+        }
+
+        .schedule-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .schedule-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .schedule-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #7f8c8d;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .schedule-tab.active {
+            color: #4a8f29;
+        }
+
+        .schedule-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #4a8f29;
+        }
+
+        .schedule-content {
+            display: none;
+        }
+
+        .schedule-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .schedule-day {
+            margin-bottom: 30px;
+        }
+
+        .day-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: 400;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .class-item {
+            display: grid;
+            grid-template-columns: 100px 1fr 100px;
+            gap: 20px;
+            padding: 15px 0;
+            border-bottom: 1px solid #f5f5f5;
+            align-items: center;
+        }
+
+        .class-time {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .class-name {
+            color: #555;
+        }
+
+        .class-name strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .class-trainer {
+            color: #4a8f29;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        /* Teachers Section */
+        .teachers-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .teacher-card {
+            background-color: #f5f9f4;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .teacher-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .teacher-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .teacher-name {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-weight: 400;
+        }
+
+        .teacher-specialty {
+            color: #4a8f29;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .teacher-bio {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .teacher-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .teacher-social a {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .teacher-social a:hover {
+            color: #4a8f29;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 80px 0;
+            background-color: #f5f9f4;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid #4a8f29;
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #4a8f29;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: 400;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #4a8f29;
+            margin-bottom: 20px;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features li i {
+            color: #4a8f29;
+            margin-right: 10px;
+        }
+
+        .pricing-button {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            background-color: #4a8f29;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .pricing-button:hover {
+            background-color: #3a7320;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial {
+            background-color: #f5f9f4;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .client-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid #4a8f29;
+        }
+
+        .client-quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .client-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .client-role {
+            color: #4a8f29;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .testimonial-dot.active {
+            background-color: #4a8f29;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .intro-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .intro-image {
+                order: -1;
+            }
+            
+            .yoga-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .header-button {
+                width: 100%;
+                max-width: 250px;
+                margin-bottom: 10px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .class-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .class-trainer {
+                text-align: left;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Yoga Header -->
+    <section class="yoga-header">
+        <div class="container">
+            <h1>Yoga & Meditation</h1>
+            <p>Discover inner peace and physical strength through our diverse yoga and meditation programs. Whether you're a beginner or advanced practitioner, our classes will help you find balance in body and mind.</p>
+            <div class="header-buttons">
+                <a href="#pricing" class="header-button primary-btn">START YOUR JOURNEY</a>
+                <!-- <a href="#schedule" class="header-button secondary-btn">VIEW SCHEDULE</a> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Yoga Intro -->
+    <section class="yoga-intro">
+        <div class="container">
+            <h2 class="section-title">FIND YOUR BALANCE</h2>
+            <div class="intro-content">
+                <div class="intro-text">
+                    <p>At Ultimate Fitness, we believe yoga is for everybody. Our welcoming community and expert instructors will guide you through practices that strengthen your body, calm your mind, and uplift your spirit.</p>
+                    <p>Our yoga classes blend traditional techniques with modern approaches, creating a practice that's both authentic and accessible. Whether you're looking to increase flexibility, build strength, reduce stress, or find mindfulness, we have a class for you.</p>
+                    <p>Complement your yoga practice with our meditation sessions designed to help you cultivate mindfulness, reduce anxiety, and improve focus. Learn techniques you can incorporate into your daily life for lasting benefits.</p>
+                </div>
+                <div class="intro-image">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Yoga Practice">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Yoga Styles -->
+    <section class="yoga-styles">
+        <div class="container">
+            <h2 class="section-title">OUR YOGA STYLES</h2>
+            <div class="styles-grid">
+                <div class="style-card">
+                    <div class="style-image" style="background-image: url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="style-content">
+                        <h3 class="style-title">Hatha Yoga</h3>
+                        <div class="style-meta">
+                            <span><i class="fas fa-tachometer-alt"></i> Beginner</span>
+                            <span><i class="fas fa-clock"></i> 60 mins</span>
+                        </div>
+                        <p class="style-description">A gentle introduction to the most basic yoga postures. Perfect for beginners to learn proper alignment and breathing techniques.</p>
+                        <a href="#" class="style-button">LEARN MORE</a>
+                    </div>
+                </div>
+                <div class="style-card">
+                    <div class="style-image" style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="style-content">
+                        <h3 class="style-title">Vinyasa Flow</h3>
+                        <div class="style-meta">
+                            <span><i class="fas fa-tachometer-alt"></i> Intermediate</span>
+                            <span><i class="fas fa-clock"></i> 75 mins</span>
+                        </div>
+                        <p class="style-description">A dynamic practice that links breath with movement through a flowing sequence of poses. Builds strength and flexibility.</p>
+                        <a href="#" class="style-button">LEARN MORE</a>
+                    </div>
+                </div>
+                <!-- <div class="style-card">
+                    <div class="style-image" style="background-image: url('https://images.unsplash.com/photo-1537621140736-1f1fbbb1b4b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="style-content">
+                        <h3 class="style-title">Yin Yoga</h3>
+                        <div class="style-meta">
+                            <span><i class="fas fa-tachometer-alt"></i> All Levels</span>
+                            <span><i class="fas fa-clock"></i> 45 mins</span>
+                        </div>
+                        <p class="style-description">A slow-paced style with poses held for longer periods to target deep connective tissues and improve flexibility.</p>
+                        <a href="#" class="style-button">LEARN MORE</a>
+                    </div>
+                </div> -->
+                <div class="style-card">
+                    <div class="style-image" style="background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="style-content">
+                        <h3 class="style-title">Power Yoga</h3>
+                        <div class="style-meta">
+                            <span><i class="fas fa-tachometer-alt"></i> Advanced</span>
+                            <span><i class="fas fa-clock"></i> 60 mins</span>
+                        </div>
+                        <p class="style-description">A vigorous, fitness-based approach to vinyasa-style yoga that builds strength and stamina.</p>
+                        <a href="#" class="style-button">LEARN MORE</a>
+                    </div>
+                </div>
+                <!-- <div class="style-card">
+                    <div class="style-image" style="background-image: url('https://images.unsplash.com/photo-1510894347714-322a910a588f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="style-content">
+                        <h3 class="style-title">Restorative Yoga</h3>
+                        <div class="style-meta">
+                            <span><i class="fas fa-tachometer-alt"></i> All Levels</span>
+                            <span><i class="fas fa-clock"></i> 60 mins</span>
+                        </div>
+                        <p class="style-description">A relaxing practice using props to support the body in passive poses that promote deep relaxation and stress relief.</p>
+                        <a href="#" class="style-button">LEARN MORE</a>
+                    </div>
+                </div> -->
+                <div class="style-card">
+                    <div class="style-image" style="background-image: url('https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="style-content">
+                        <h3 class="style-title">Meditation Sessions</h3>
+                        <div class="style-meta">
+                            <span><i class="fas fa-tachometer-alt"></i> All Levels</span>
+                            <span><i class="fas fa-clock"></i> 30-45 mins</span>
+                        </div>
+                        <p class="style-description">Guided meditation practices to cultivate mindfulness, reduce stress, and improve mental clarity.</p>
+                        <a href="#" class="style-button">LEARN MORE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meditation Benefits -->
+    <section class="meditation-benefits">
+        <div class="container">
+            <h2 class="section-title">BENEFITS OF MEDITATION</h2>
+            <div class="benefits-container">
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-brain"></i></div>
+                    <div class="benefit-text">
+                        <h3>Reduces Stress</h3>
+                        <p>Meditation decreases cortisol levels, helping you manage stress and anxiety more effectively in daily life.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-heart"></i></div>
+                    <div class="benefit-text">
+                        <h3>Improves Emotional Health</h3>
+                        <p>Regular practice can lead to improved self-image and a more positive outlook on life.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-eye"></i></div>
+                    <div class="benefit-text">
+                        <h3>Enhances Self-Awareness</h3>
+                        <p>Helps you develop a stronger understanding of yourself and grow into your best self.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                    <div class="benefit-text">
+                        <h3>Lengthens Attention Span</h3>
+                        <p>Improves focus and concentration by increasing the strength and endurance of your attention.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-bed"></i></div>
+                    <div class="benefit-text">
+                        <h3>Improves Sleep</h3>
+                        <p>Can help relax the body and release tension, leading to better sleep quality.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <div class="benefit-text">
+                        <h3>Increases Kindness</h3>
+                        <p>Certain types of meditation may increase positive feelings and actions toward others.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teachers Section -->
+    <section class="teachers-section">
+        <div class="container">
+            <h2 class="section-title">MEET OUR TEACHERS</h2>
+            <div class="teachers-grid">
+                <div class="teacher-card">
+                    <div class="teacher-image" style="background-image: url('https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">Jyoti</h3>
+                        <p class="teacher-specialty">Hatha & Restorative Yoga</p>
+                        <p class="teacher-bio">With 15 years of teaching experience, Jyoti specializes in therapeutic yoga and alignment-based practices. Her classes focus on mindful movement and breath awareness.</p>
+                        <div class="teacher-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-image" style="background-image: url('https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">Jyoti</h3>
+                        <p class="teacher-specialty">Vinyasa & Power Yoga</p>
+                        <p class="teacher-bio">Jyoti brings dynamic energy to his classes, combining creative sequencing with attention to alignment. His background in martial arts informs his teaching style.</p>
+                        <div class="teacher-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-image" style="background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="teacher-info">
+                        <h3 class="teacher-name">Jyoti</h3>
+                        <p class="teacher-specialty">Meditation & Yin Yoga</p>
+                        <p class="teacher-bio">Jyoti approach blends traditional meditation techniques with modern neuroscience. She offers practical tools for managing stress and cultivating mindfulness.</p>
+                        <div class="teacher-social">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <h2 class="section-title">MEMBERSHIP OPTIONS</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 class="pricing-title">DROP-IN</h3>
+                    <div class="pricing-price">1000 Rupees<span>/class</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Single class access</li>
+                        <li><i class="fas fa-check"></i> All yoga styles</li>
+                        <li><i class="fas fa-check"></i> Meditation sessions</li>
+                        <li><i class="fas fa-times"></i> No commitment</li>
+                        <li><i class="fas fa-times"></i> No discounts</li>
+                    </ul>
+                    <a href="#" class="pricing-button">BOOK NOW</a>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-tag">POPULAR</div>
+                    <h3 class="pricing-title">MONTHLY UNLIMITED</h3>
+                    <div class="pricing-price">1500 Rupees<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Unlimited classes</li>
+                        <li><i class="fas fa-check"></i> All yoga styles</li>
+                        <li><i class="fas fa-check"></i> Meditation sessions</li>
+                        <li><i class="fas fa-check"></i> Advanced Nutrition Guide</li>
+                        <li><i class="fas fa-check"></i> Monthly Goal Review</li>
+                        <li><i class="fas fa-times"></i> Competition Team</li>
+                    </ul>
+                    <a href="#" class="pricing-button">GET STARTED</a>
+                </div>
+                <div class="pricing-card">
+                    <h3 class="pricing-title">COMPETITOR</h3>
+                    <div class="pricing-price">2500 Rupees<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Unlimited Classes</li>
+                        <li><i class="fas fa-check"></i> Open Gym 24/7</li>
+                        <li><i class="fas fa-check"></i> Personalized Nutrition Plan</li>
+                        <li><i class="fas fa-check"></i> Weekly Coaching Sessions</li>
+                        <li><i class="fas fa-check"></i> Competition Team Access</li>
+                    </ul>
+                    <a href="#" class="pricing-button">GET STARTED</a>
+                </div>
+            </div>
+        </div>
+    </section>
